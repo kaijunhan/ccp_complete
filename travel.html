@@ -8,8 +8,9 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <a href="#skip" class="skip-link">Skip to Main Content</a>
     <nav>
+        <a href="#skip" class="skip-link">Skip to Main Content</a>
+
         <ul>
             <li><a href="index.html">Home</a></li>
             <li><a href="pets.html">Pets</a></li>
@@ -19,8 +20,8 @@
     </nav>
     <header>
         <h1>Week Two discussion</h1>
+        <h1>Location</h1>
     </header>
-    <h1>Location</h1>
     <main id="skip">
         <div class="item">
             <h2>Yellowstone National Park</h2>
@@ -128,22 +129,27 @@
 
     </main>
     <!-- Add the script tag just before the closing body tag -->
-    <script>
-        // This script adds keyboard control to gallery containers
-        document.querySelectorAll('.gallery-container').forEach((container) => {
-            container.setAttribute('tabindex', '0'); // Make the container focusable
+    <footer>
+        <script>
+            // This script adds keyboard control to gallery containers
+            document.querySelectorAll('.gallery-container').forEach((container) => {
+                container.setAttribute('tabindex', '0'); // Make the container focusable
 
-            // Add an event listener for the keydown event
-            container.addEventListener('keydown', (event) => {
-                if (event.key === 'ArrowLeft') {
-                    // Scroll left
-                    container.scrollBy({ left: -container.offsetWidth, behavior: 'smooth' });
-                } else if (event.key === 'ArrowRight') {
-                    // Scroll right
-                    container.scrollBy({ left: container.offsetWidth, behavior: 'smooth' });
-                }
+                // Add an event listener for the keydown event
+                container.addEventListener('keydown', (event) => {
+                    if (event.key === 'ArrowLeft') {
+                        // Scroll left
+                        container.scrollBy({ left: -container.offsetWidth, behavior: 'smooth' });
+                    } else if (event.key === 'ArrowRight') {
+                        // Scroll right
+                        container.scrollBy({ left: container.offsetWidth, behavior: 'smooth' });
+                    }
+                });
             });
-        });
-    </script>
+        </script>
+        <script src="js/script.js"></script>
+    </footer>
+    
 </body>
+
 </html>

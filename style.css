@@ -80,23 +80,23 @@ nav ul li a {
     padding: 8px;
 }
 
-body {
+/* body {
     display: grid;
     grid-template-rows: auto 1fr;
     grid-template-columns: 100%;
     gap: 20px;
     margin: 0;
     font-family: Arial, sans-serif;
-}
+} */
 
+/* 
 main {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     grid-auto-rows: minmax(100px, auto);
-    /* This sets a minimum row height */
     gap: 0.5em;
     padding: 0.25em;
-}
+} */
 
 h1 {
     background-color: #FDFD96;
@@ -168,28 +168,27 @@ h1 {
 }
 
 
-/* ACCESSIBILITY */
-@media (prefers-reduced-motion: reduce) {
-    /* Styles to apply when motion is reduced /
-    / For example, you might want to disable or minimize animations */
-    *{
-        transition-duration: 0.001ms !important;
-        animation-duration: 0.001ms !important;
-        scroll-behavior: auto !important;
-    }
-}
 
-
-@media only screen and (max-width: 768px) {
-    /* Styles for mobile devices */
+/* Styles for mobile devices */
+@media only screen and (min-width: 0px) {
     .skip-link {
         display: none;
     }
+
+    main {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-auto-rows: minmax(100px, auto);
+        overflow-y: scroll;
+        scroll-snap-type: y mandatory;
+        gap: 0.5em;
+        padding: 0.25em;
+    }
 }
 
-
 /* Tablet and below */
-@media only screen and (max-width: 1024px) {
+/* Tablet View */
+@media only screen and (min-width: 769px) {
 
     .skip-link {
         left: 10px;
@@ -225,14 +224,15 @@ h1 {
         /* Increase padding for easier touch interaction */
     }
 
-    /* Adjust main content layout */
+
     main {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(2, 1fr);
+        grid-auto-rows: minmax(150px, auto);
+        gap: 0.75em;
+        padding: 0.5em;
         overflow-y: scroll;
         /* Allow vertical scrolling */
         scroll-snap-type: y mandatory;
-        /* Enable scroll snapping on the y-axis */
-        /* Adjust grid column size for tablet screens */
     }
 
 
@@ -241,11 +241,11 @@ h1 {
         height: auto;
         /* Adjust the height to maintain aspect ratio */
     }
-    
+
     /* Create a horizontally scrollable container within each .item */
     .gallery-container {
         outline: none;
-            /* Remove default outline to customize focus styles */
+        /* Remove default outline to customize focus styles */
         display: flex;
         /* Use flexbox for horizontal alignment */
         overflow-x: auto;
@@ -260,6 +260,7 @@ h1 {
         width: 100%;
         object-fit: contain;
     }
+
     .gallery-container:focus {
         outline: 2px solid #005fcc;
         /* Example focus style */
@@ -323,6 +324,71 @@ h1 {
     }
 }
 
+/* Desktop View */
+@media only screen and (min-width: 1025px) {
+  
+    main {
+        /* display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        grid-auto-rows: minmax(100px, auto);
+        gap: 0.5em;
+        padding: 0.25em; */
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        grid-auto-rows: minmax(200px, auto);
+        /* gap: 1em;
+        padding: 0.5em; */
+    }
+
+    .font-size-container {
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+    }
+
+    .font-size-button {
+        font-size: 48px;
+        padding: 20px 40px;
+        margin: 0 20px;
+        border: none;
+        background-color: #f0f0f0;
+        cursor: pointer;
+        border-radius: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.8);
+        transition: transform 0.2s ease-in-out;
+    }
+
+    .font-size-button:hover {
+        background-color: #e0e0e0;
+        transform: scale(1.1);
+    }
+
+    .text-block {
+        position: absolute;
+        top: -30px;
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: #333;
+        color: #fff;
+        padding: 5px 10px;
+        border-radius: 5px;
+        transition: opacity 0.2s ease-in-out;
+    }
+}
+
+/* ACCESSIBILITY */
+@media (prefers-reduced-motion: reduce) {
+
+    /* Styles to apply when motion is reduced /
+    / For example, you might want to disable or minimize animations */
+    * {
+        transition-duration: 0.001ms !important;
+        animation-duration: 0.001ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+
 /* Enhance interactive elements for touch, not just hover */
 /* Note: :hover styles are still included for devices that support hover */
 a,
@@ -341,3 +407,4 @@ button:focus {
     outline: 3px solid #ff6347;
     /* Make the focus state clear for keyboard and screen reader users */
 }
+
